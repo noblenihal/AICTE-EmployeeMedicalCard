@@ -1,0 +1,328 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff2d5;  /* fallback for old browsers */
+  
+}
+
+.form-wrap{
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+button{
+  cursor: pointer;
+}
+
+.dep-head{
+  margin-top: 0;
+}
+.dependent-details{
+  margin: 5px;
+  margin-left: 10px;
+}
+
+.dependent-info{
+  margin-bottom: 10px;
+}
+
+.dependent-info{
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fac147;
+  justify-content: space-around;
+}
+.img-input{
+  margin: 15px 0;
+}
+
+.fields{
+  display: flex;
+  flex-direction: column;
+}
+
+#enter{
+  height: max-content;
+  max-width: 200px;
+  padding: 15px;
+  border-radius: 50px;
+  background-color: #fca432;
+  font-size: 1rem;
+  transition: 0.5s;
+}
+
+#enter:hover{
+  background-color: #e7d004;
+}
+
+.enter-link{
+  text-decoration: none;
+  color: black;
+  transition: 0.5s;
+}
+
+
+
+.home{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.all-details{
+  display: flex;
+}
+
+.emp-img{
+  width: 30%;
+  height: 20%;
+}
+
+.dep-img-form{
+  width: 60%;
+  align-self:center;
+}
+
+.d-display-tr{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.d-field{
+  font-size: small;
+}
+
+.d-form-display{
+  min-width: 70px;
+  max-width: 100px;
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  background-color: #dfdfdf;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.emp-img-form{
+  width: 25%;
+  height: 20%;
+}
+
+.employee-details{
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-form{
+  width: 70%;
+}
+
+.d-form{
+  display: flex;
+  flex-direction: column;
+  width : 70%;
+}
+
+Form, .form-head, .container {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+
+
+  width: 50%;
+  padding: 20px;
+
+  background-color: #ffeb79;
+  /* background-image: linear-gradient(315deg, #b4b4b4 0%, #ffffff 74%); */
+  border-radius: 10px;
+}
+
+.input{
+  width: 70%;
+  margin-bottom: 10px;
+  padding: 10px;
+  outline: 0;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+}
+.title{
+  font-size: 2rem;
+}
+
+.Emp-title{
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+.dependent-title{
+  font-size: 1.3rem;
+}
+.emp-dep-head{
+  margin-top: 2px;
+}
+
+.placeholder{
+  color: whitesmoke;
+  background-color: rgb(19, 19, 19);
+  width: 15%;
+  min-width: fit-content;
+  padding: 1px 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.PDFbutton{
+  margin: 15px
+}
+#details-submit{
+  justify-self: center
+}
+.AddButton, #details-submit, .PDFbutton{
+  width: fit-content;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: rgb(252, 152, 38);
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  transition: 0.5;
+}
+
+.AddButton:hover, #details-submit:hover, .PDFbutton{
+  background-color: #e9ca19;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 595px;
+  height: 842px;
+  background-color: white;
+}
+
+.dependent-form{
+  display: flex;
+  flex-direction: row;
+  
+}
+.d-container{
+  background-color: #e6b344;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+h2{
+  text-align: center;
+}
+
+.all-details{
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.emp-download-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo{
+  padding: 1%;
+  height: 10vh;
+}
+
+header{
+  background-color: #13121227;
+  
+}
+table{
+  width: 80%;
+}
+td{
+  height: 25px;
+}
+
+.verify{
+  margin:0;
+  text-align: center;
+  font-size: 0.6rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  justify-self: baseline;
+  color: #707070;
+}
+
+.display-page{
+  display: flex;
+  justify-content: center;
+}
+
+#d-table{ 
+	width: 100%; 
+	border-collapse: collapse; 
+  background-color:  #f5c765;
+
+  margin-bottom: 20px;
+
+
+  border: solid 2px #13121200;
+	}
+
+  
+
+/* Zebra striping */
+.d-tr:nth-of-type(odd) { 
+	background: rgb(255, 254, 254); 
+	}
+
+.d-th { 
+	background: rgb(255, 196, 0); 
+	color: black; 
+	font-weight: bold;
+ 
+	}
+
+.d-td, .d-th { 
+	padding: 10px; 
+	border: 1px solid #e5e1ee00;
+
+	text-align: left; 
+	font-size: 18px;
+	}
+
+.Component {
+
+  color: white;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: darkblue;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+
+}

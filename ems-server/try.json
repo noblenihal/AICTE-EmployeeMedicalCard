@@ -1,0 +1,23 @@
+{
+    "employeeName" : "Pratyush",
+    "mobileNumber" : "9910724526",
+    "dateOfBirth" : "2000-05-06",
+    "address" : "Sarita Vihar, Delhi",
+    "designation"  : "Intern",
+    "ward" : "private",
+    "bloodGroup" : "O+",
+    "payMatrix"  : "5000",
+    "allDependents" : [
+        {
+            "name" : "Niranjan Gupta",
+            "relation" : "Brother", 
+            "dateOfBirth"  : "2000-05-09"
+        },
+        {
+            "name" : "Pallavi Gupta",
+            "relation" : "Sister", 
+            "dateOfBirth"  : "2000-05-09"
+        }
+
+    ]
+}
