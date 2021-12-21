@@ -13,7 +13,7 @@ class Employee(models.Model):
     ward = models.CharField(max_length=15, null=False)
     bloodGroup = models.CharField(max_length=5, null=False)
     payMatrix = models.CharField(max_length=35, null=False)
-    image = models.ImageField(null=False, blank=False, default="default.png")
+    image = models.ImageField(upload_to="images", default="default.png")
 
     def __str__(self):
         return self.employeeName
@@ -25,7 +25,7 @@ class Dependent(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     relation = models.CharField(max_length=30, null=False, blank=False)
     dateOfBirth = models.DateField(null=False)
-    image = models.ImageField(null=False, blank=False, default="default.png")
+    image = models.ImageField(upload_to="images", default="default.png")
 
     def __str__(self):
         return self.name

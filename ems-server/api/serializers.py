@@ -5,15 +5,7 @@ from . import models
 class EmployeeSerializer(ModelSerializer):
     class Meta:
         model = models.Employee
-        fields = ('employeeName',
-                  'mobileNumber',
-                  'dateOfBirth',
-                  'address',
-                  'designation',
-                  'ward',
-                  'bloodGroup',
-                  'payMatrix',
-                  )
+        fields = '__all__'
 
 
 class DependentSerializer(ModelSerializer):

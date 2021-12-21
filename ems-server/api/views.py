@@ -28,6 +28,7 @@ def employeesData(request):
         ward=data['ward'],
         bloodGroup=data['bloodGroup'],
         payMatrix=data['payMatrix'],
+        image=data["empImage"],
 
     )
 
@@ -37,18 +38,31 @@ def employeesData(request):
     except:
         print("some error mann!!")
 
-    allDependents = data['allDependents']
-    print(allDependents)
-    print(type(allDependents))
-    for item in allDependents:
+    numberOfDep = int(data["numberOfDep"])
+
+    for i in range(0, numberOfDep):
         dependent = models.Dependent.objects.create(
             eId=employee,
-            name=item["name"],
-            relation=item['relation'],
-            dateOfBirth=item['dateOfBirth'],
+            name=data[f"name{i}"],
+            relation=data[f"relation{i}"],
+            dateOfBirth=data[f"dateOfBirth{i}"],
+            image=data[f"dImage{i}"],
         )
 
         dependent.save()
+
+    # allDependents = data['allDependents']
+    # print(allDependents)
+    # print(type(allDependents))
+    # for item in allDependents:
+    #     dependent = models.Dependent.objects.create(
+    #         eId=employee,
+    #         name=item["name"],
+    #         relation=item['relation'],
+    #         dateOfBirth=item['dateOfBirth'],
+    #     )
+
+        # dependent.save()
 
     return Response({"recentlyAddedId": f"{Eid}"})
 

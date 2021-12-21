@@ -21,9 +21,8 @@ const Form = () => {
     const [ id, setId] = useState("");
     const [ dependentsInfo, setDependentsInfo] = useState([]);
     const [show, setShow] = useState(false);
-    
+    const [ empImage, setEmpImage] = useState(null);
 
-    
     
 
     const handleSubmit = async (e) => {
@@ -44,9 +43,40 @@ const Form = () => {
             "allDependents" : dependentsInfo,
         }   
 
-        const response = await axios.post("http://127.0.0.1:8000/api/employees/", data);  
+
+        const numberOfDep = dependentsInfo.length
+
+        var formdata = new FormData();
+
+        formdata.append("numberOfDep", numberOfDep)
+        formdata.append("employeeName", name);
+        formdata.append("mobileNumber", mobileNumber);
+        formdata.append("dateOfBirth", dob);
+        formdata.append("address", address);
+        formdata.append("designation", designation);
+        formdata.append("ward", ward);
+        formdata.append("bloodGroup", bloodGroup);
+        formdata.append("payMatrix", payMatrix);
+        formdata.append("empImage", empImage, name)
+
+        dependentsInfo.forEach((item, i)=>{
+            const depName = item["name"]
+            const depDOB = item["dateOfBirth"]
+            const depRel = item["relation"]
+            const depImg = item["dImage"]
+
+            formdata.append(`name${i}`, depName);
+            formdata.append(`dateOfBirth${i}`, depDOB);
+            formdata.append(`relation${i}`, depRel);
+            formdata.append(`dImage${i}`, depImg);
+        })
+
+        console.log(formdata)
+
+
+        const response = await axios.post("http://127.0.0.1:8000/api/employees/", formdata);  
         
-         setId(response.data["recentlyAddedId"])
+        setId(response.data["recentlyAddedId"])
         console.log(response.data["recentlyAddedId"]);
         console.log(domain.baseUrl)
 
@@ -55,7 +85,13 @@ const Form = () => {
 
     const addComponent = () => {
         
-        setShow(!show);
+        if(dependentsInfo.length>10){
+            alert("No more Dependents can be added ");
+        }
+        else{
+            setShow(!show);
+        }
+
         
     }
 
@@ -69,11 +105,14 @@ const Form = () => {
         </div>    
            <div className='container'>
                 <form id="contact"  className="employee-form" onSubmit={handleSubmit}>
+                                
+                    
                     
                     <div className="fields">
 
                     <label htmlFor="name" className="placeholder" > Name</label>
                     <input id="name" placeholder="Your name" value = {name} type="text" tabIndex="1" required autoFocus onChange={(e) =>setName(e.target.value)} className="input"/>
+                    
                     </div>
                     
                         
@@ -130,6 +169,13 @@ const Form = () => {
                     <input id="bloodgroup" placeholder="Your Blood Group" value = {bloodGroup} type="text" tabIndex="8" required autoFocus onChange={(e) => setBloodGroup(e.target.value)}  className="input"/>
 
                     </div>
+
+                    <div className="fields">
+
+                    <label htmlFor="emp-image" className="placeholder" >Upload your Image</label>     
+                    <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> setEmpImage(e.target.files[0])} required autoFocus className="input"/>
+
+                    </div>
                     
                 
                     
@@ -172,12 +218,13 @@ const Form = () => {
                 
                 { (show===true)?
                     
-                    <DependentForm onCreate={(dName, dDob, dRel)=>{
+                    <DependentForm onCreate={(dName, dDob, dRel, dImg)=>{
                         
                         setDependentsInfo([...dependentsInfo,{
                             "name":dName,
                             "dateOfBirth": dDob,
                             "relation" : dRel,
+                            "dImage" : dImg,
                         }])}
                     
                         } show={show} setShow={setShow}/> : <Button text="Add Dependents" onClick={addComponent} />

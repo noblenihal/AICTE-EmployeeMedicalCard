@@ -8,6 +8,7 @@ const DependentForm = ({onCreate, show, setShow}) => {
   const [dname, setdName] = useState("");
   const [dDob, setdDob] = useState("");
   const [dRel, setdRel] = useState("");
+  const [dImg, setdImg] = useState(null);
 
   
   const handleDep = (e) => {
@@ -15,7 +16,7 @@ const DependentForm = ({onCreate, show, setShow}) => {
 
       e.preventDefault()
       if(dname!=="" && dDob!=="" && dRel!=="" ){
-        onCreate(dname, dDob, dRel);
+        onCreate(dname, dDob, dRel, dImg);
         setShow(!show);
       }
       else{
@@ -40,6 +41,11 @@ const DependentForm = ({onCreate, show, setShow}) => {
           
           <label htmlFor="drel" className="placeholder">Relation</label>
             <input id="drel" value={dRel} className="input" placeholder="Relation with Employee" onChange={(e) => setdRel(e.target.value)} type="text" required/>
+
+
+          <label htmlFor="emp-image" className="placeholder" >Upload your Image</label>     
+          <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> setdImg(e.target.files[0])} required autoFocus className="input"/>
+  
         
         </div>
 

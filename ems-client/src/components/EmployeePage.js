@@ -1,7 +1,6 @@
 import{ useState, useEffect } from 'react'
 import domain from "./config/index"
 import QRCode from "qrcode.react";
-import def from '../images/default.png';
 import axios from "axios";
 import jsPDF from 'jspdf';
 
@@ -19,7 +18,6 @@ const EmployeePage = ({id}) => {
     let getEmployeeData = async () => { 
         let response = await axios.get(`/api/employee/${id}`);
         setEmpData(response.data); 
-
         setLoading(false);
     } 
 
@@ -53,7 +51,7 @@ const EmployeePage = ({id}) => {
                     <div className='employee-details'>
                         <div className='basic-details'>
                            <h3 className='emp-dep-head' >Employee Details</h3>
-                           <img src={def} alt="employee" className='emp-img-form' />
+                           <img src={empData["image"]} alt="employee" className='emp-img-form' />
                             <table className='e-table'>
                                 <tbody>
                                     <tr>
@@ -115,7 +113,7 @@ const EmployeePage = ({id}) => {
                         empData["allDependents"].map((item,i)=>(
                             <div key={i} className="d-form-display">
                                 
-                                <img src={def} alt={item["name"]} className='dep-img-form'/>
+                                <img src={item["image"]} alt={item["name"]} className='dep-img-form'/>
                                 <div className='d-field' >
                                     Name: {item["name"]}
                                 </div>
