@@ -42,6 +42,17 @@ button{
 }
 .img-input{
   margin: 15px 0;
+
+}
+
+.input-img{
+  background-color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+  border-bottom: solid 2px grey;
+  border-right: solid 2px grey;
 }
 
 .fields{
@@ -72,7 +83,6 @@ button{
 
 
 .home{
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -185,6 +195,8 @@ Form, .form-head, .container {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
+
+
 
 
 code {

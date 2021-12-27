@@ -4,7 +4,7 @@ import DependentForm from "./DependentForm"
 import axios from "axios";
 import domain from "./config/index.js"
 import EmployeePage from './EmployeePage';
-import def from '../images/default.png';
+import def from '../images/default.jpeg';
 import Dependent from "./Dependent"
 
 
@@ -22,6 +22,7 @@ const Form = () => {
     const [ dependentsInfo, setDependentsInfo] = useState([]);
     const [show, setShow] = useState(false);
     const [ empImage, setEmpImage] = useState(null);
+    const [imgData, setImgData] = useState(null);
 
     
 
@@ -29,19 +30,7 @@ const Form = () => {
         // const response = await fetch("");
         // const obj = await response.json();
         // const id = obj["id"];
-        e.preventDefault(); 
-
-        let data = {
-            "employeeName" : name,
-            "mobileNumber" : mobileNumber,
-            "dateOfBirth" : dob,
-            "address" : address,
-            "designation" : designation,
-            "ward" : ward,
-            "bloodGroup" : bloodGroup,
-            "payMatrix" : payMatrix,
-            "allDependents" : dependentsInfo,
-        }   
+        e.preventDefault();  
 
 
         const numberOfDep = dependentsInfo.length
@@ -173,7 +162,15 @@ const Form = () => {
                     <div className="fields">
 
                     <label htmlFor="emp-image" className="placeholder" >Upload your Image</label>     
-                    <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> setEmpImage(e.target.files[0])} required autoFocus className="input"/>
+                    <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> {
+                        setEmpImage(e.target.files[0])
+                        const reader = new FileReader();
+                        reader.addEventListener("load", () => {
+                            setImgData(reader.result);
+                        });
+                        reader.readAsDataURL(e.target.files[0]);
+                        }
+                    }required autoFocus className="input input-img"/>
 
                     </div>
                     
@@ -191,6 +188,7 @@ const Form = () => {
                                     <th className='d-th'>Name</th>
                                     <th className='d-th'>Date of birth</th>
                                     <th className='d-th'>Relation</th>
+                                    <th className='d-th'>Image</th>
                                 </tr>
                             </thead>
 
@@ -200,7 +198,7 @@ const Form = () => {
 
                                 dependentsInfo.map((item, i)=>(
                                     <tr  className="d-tr" key={i}>
-                                        <Dependent name = {item["name"]} dob={item["dateOfBirth"]} rel={item["relation"]} key={i}/>
+                                        <Dependent name = {item["name"]} dob={item["dateOfBirth"]} rel={item["relation"]} imgName={item["dImage"].name} key={i}/>
                                     </tr>
 
                                 ))
@@ -235,8 +233,11 @@ const Form = () => {
                     <button name="submit" type="submit" id="details-submit" data-submit="...Sending" >Submit</button>
 
                 </form>
+                
+                {
 
-                <img src={def} alt="employee" className='emp-img' />
+                    (imgData===null)?<img src={def} alt="employee" className='emp-img' />:<img src={imgData} alt="employee" className='emp-img' />
+                }
 
             
 

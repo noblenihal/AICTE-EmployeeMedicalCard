@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { useState } from 'react';
 import Button from "./Button";
-import def from '../images/default.png'
+import def from '../images/default.jpeg'
 
 const DependentForm = ({onCreate, show, setShow}) => { 
 
@@ -9,7 +9,7 @@ const DependentForm = ({onCreate, show, setShow}) => {
   const [dDob, setdDob] = useState("");
   const [dRel, setdRel] = useState("");
   const [dImg, setdImg] = useState(null);
-
+  const [imgdepData, setImgDepData] = useState(null);
   
   const handleDep = (e) => {
 
@@ -44,14 +44,29 @@ const DependentForm = ({onCreate, show, setShow}) => {
 
 
           <label htmlFor="emp-image" className="placeholder" >Upload your Image</label>     
-          <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> setdImg(e.target.files[0])} required autoFocus className="input"/>
+          <input id="emp-img" type="file" tabIndex="9" onChange={(e)=> {
+                        setdImg(e.target.files[0])
+                        const reader = new FileReader();
+                        reader.addEventListener("load", () => {
+                            setImgDepData(reader.result);
+                        });
+                        reader.readAsDataURL(e.target.files[0]);
+                        }
+                    } required autoFocus className="input input-img"/>
   
         
         </div>
 
         
         
-        <img src={def} alt="dependent" className='emp-img'/>
+  
+        {
+
+        (imgdepData===null)?<img src={def} alt="dependent" className='emp-img'/>:<img src={imgdepData} alt="dependent" className='emp-img'/>
+
+        }
+
+
       </div> 
       <Button text="Add" onClick={handleDep} />
 

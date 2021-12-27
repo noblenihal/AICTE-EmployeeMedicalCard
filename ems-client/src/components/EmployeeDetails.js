@@ -2,8 +2,6 @@ import React from 'react';
 import { useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import def from '../images/default.png';
-
 
 
 
@@ -40,14 +38,14 @@ const EmployeeDetails = ({match}) => {
 
                     <div className='employee-details'>
                         <div className='basic-details'>
-                           <h3  >Employee Details</h3>
-                           <img src={def} alt="employee" className='emp-img-form' />
+                           <h3 className='emp-dep-head' >Employee Details</h3>
+                           <img src={empData["image"]} alt="employee" className='emp-img-form' />
                             <table className='e-table'>
                                 <tbody>
                                     <tr>
                                         <td className="e-td-left">Name of the Employee</td>
                                         <td className="e-td">{empData["employeeName"]}</td>
-                                    </tr>
+                                    </tr>   
                                     <tr>
                                         <td className="e-td-left">Mobile Number</td>
                                         <td className="e-td">{empData["mobileNumber"]}</td>
@@ -96,7 +94,7 @@ const EmployeeDetails = ({match}) => {
                         empData["allDependents"].map((item,i)=>(
                             <div key={i} className="d-form-display">
                                 
-                                <img src={def} alt={item["name"]} className='dep-img-form'/>
+                                <img src={item["image"]} alt={item["name"]} className='dep-img-form'/>
                                 <div className='d-field' >
                                     Name: {item["name"]}
                                 </div>
